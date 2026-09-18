@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nyx AI</string>
+    <string name="welcome_message">Olá, eu sou Nyx</string>
+    <string name="tagline">Sua assistente pessoal inteligente</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_1_title">Converse Naturalmente</string>
+    <string name="onboarding_1_description">Chat por texto e voz com IA avançada</string>
+    <string name="onboarding_2_title">Organize Sua Vida</string>
+    <string name="onboarding_2_description">Integração com Google Agenda e WhatsApp</string>
+    <string name="onboarding_3_title">Privacidade Total</string>
+    <string name="onboarding_3_description">Seus dados ficam apenas no seu dispositivo</string>
+    <string name="onboarding_4_title">Automação Inteligente</string>
+    <string name="onboarding_4_description">Crie gatilhos e automatize tarefas</string>
+    
+    <!-- Chat -->
+    <string name="chat_hint">Digite sua mensagem...</string>
+    <string name="chat_voice_hint">Toque para falar</string>
+    <string name="chat_welcome">Como posso ajudar você hoje?</string>
+    
+    <!-- Navigation -->
+    <string name="nav_chat">Chat</string>
+    <string name="nav_automation">Automação</string>
+    <string name="nav_settings">Configurações</string>
+    
+    <!-- Authentication -->
+    <string name="login_google">Entrar com Google</string>
+    <string name="logout">Sair</string>
+    <string name="syncing">Sincronizando...</string>
+    
+    <!-- Automation -->
+    <string name="automation_create">Criar Automação</string>
+    <string name="automation_trigger">Gatilho</string>
+    <string name="automation_action">Ação</string>
+    <string name="automation_save">Salvar</string>
+    
+    <!-- Settings -->
+    <string name="settings_account">Conta</string>
+    <string name="settings_privacy">Privacidade</string>
+    <string name="settings_notifications">Notificações</string>
+    <string name="settings_about">Sobre</string>
+    
+    <!-- Common -->
+    <string name="loading">Carregando...</string>
+    <string name="error_generic">Ocorreu um erro. Tente novamente.</string>
+    <string name="success">Sucesso!</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="delete">Excluir</string>
+    <string name="save">Salvar</string>
+</resources>

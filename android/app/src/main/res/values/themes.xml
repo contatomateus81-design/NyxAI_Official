@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme (Dark Mode by default) -->
+    <style name="Theme.NyxAI" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/nyx_purple_primary</item>
+        <item name="colorPrimaryVariant">@color/nyx_purple_dark</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/nyx_purple_accent</item>
+        <item name="colorSecondaryVariant">@color/nyx_purple_dark</item>
+        <item name="colorOnSecondary">@color/text_primary</item>
+        
+        <!-- Background and Surface -->
+        <item name="android:colorBackground">@color/background_primary</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/background_primary</item>
+        <item name="android:navigationBarColor">@color/background_primary</item>
+        
+        <!-- Window -->
+        <item name="android:windowBackground">@color/background_primary</item>
+    </style>
+    
+    <!-- Splash Screen Theme -->
+    <style name="Theme.NyxAI.Splash" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">@color/background_primary</item>
+        <item name="android:navigationBarColor">@color/background_primary</item>
+    </style>
+    
+    <!-- Button Style -->
+    <style name="Widget.NyxAI.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/nyx_purple_primary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+    
+    <!-- Input Field Style -->
+    <style name="Widget.NyxAI.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/nyx_purple_primary</item>
+        <item name="hintTextColor">@color/nyx_purple_primary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+    </style>
+</resources>
