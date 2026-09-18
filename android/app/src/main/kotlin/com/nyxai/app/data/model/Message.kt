@@ -6,16 +6,18 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "messages")
 data class Message(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
+    val id: Long? = null,
     val content: String,
-    val sender: SenderType,
+    val sender: String, // "user", "nyx", "system"
+    val type: MessageType = MessageType.TEXT,
     val timestamp: Long = System.currentTimeMillis(),
     val isRead: Boolean = false,
     val metadata: String? = null // JSON for additional data
 )
 
-enum class SenderType {
-    USER,
-    AI,
-    SYSTEM
+enum class MessageType {
+    TEXT,
+    VOICE,
+    IMAGE,
+    AUTOMATION_TRIGGER
 }
