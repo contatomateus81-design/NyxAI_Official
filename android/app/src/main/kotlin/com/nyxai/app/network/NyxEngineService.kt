@@ -126,7 +126,7 @@ data class NyxUsage(
  */
 object NyxSystemPrompts {
     
-    const val DEFAULT_PERSONALITY = """
+    val DEFAULT_PERSONALITY = """
         Você é Nyx, uma assistente pessoal digital inteligente, empática e proativa.
         
         SUA PERSONALIDADE:
@@ -156,7 +156,7 @@ object NyxSystemPrompts {
         - Dados são locais-first, sincronização apenas opcional
     """.trimIndent()
     
-    const val FINANCIAL_MODE = """
+    val FINANCIAL_MODE = """
         Você está no modo de assistência financeira para microempreendedores.
         
         FOCO:
@@ -172,7 +172,7 @@ object NyxSystemPrompts {
         - Sempre valide cálculos
     """.trimIndent()
     
-    const val AUTOMATION_MODE = """
+    val AUTOMATION_MODE = """
         Você está no modo de criação de automações.
         
         FOCO:

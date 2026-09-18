@@ -1,5 +1,6 @@
 package com.nyxai.app.network
 
+import android.content.Context
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,16 +27,24 @@ object NyxApiClient {
     const val QWEN_MODEL_7B = "qwen-plus"
     const val QWEN_MODEL_TURBO = "qwen-turbo"
     
+    // Contexto da aplicação (inicializar no NyxApplication)
+    lateinit var appContext: Context
+    
     // Timeout otimizado para conversação natural
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        level = if (isDebuggable()) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
     }
     
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
         .addInterceptor { chain ->
+            val versionName = try {
+                appContext.packageManager.getPackageInfo(appContext.packageName, 0).versionName ?: "1.0"
+            } catch (e: Exception) {
+                "1.0"
+            }
             val request = chain.request().newBuilder()
-                .header("X-Nyx-Version", BuildConfig.VERSION_NAME)
+                .header("X-Nyx-Version", versionName)
                 .header("X-Device-ID", getDeviceId())
                 .build()
             chain.proceed(request)
@@ -97,6 +106,24 @@ object NyxApiClient {
      */
     private fun getDeviceId(): String {
         // Implementação real usaria Settings.Secure.ANDROID_ID com hash
-        return android.provider.Settings.Secure.ANDROID_ID ?: "unknown"
+        return android.provider.Settings.Secure.getString(
+            appContext.contentResolver, 
+            android.provider.Settings.Secure.ANDROID_ID
+        ) ?: "unknown"
+    }
+    
+    /**
+     * Verifica se o app está em modo debug
+     */
+    private fun isDebuggable(): Boolean {
+        return try {
+            val appInfo = appContext.packageManager.getApplicationInfo(
+                appContext.packageName, 
+                0
+            )
+            (appInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0
+        } catch (e: Exception) {
+            false
+        }
     }
 }

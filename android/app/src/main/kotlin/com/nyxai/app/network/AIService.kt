@@ -100,7 +100,7 @@ object NyxPrompts {
      * System Prompt Principal - Personalidade da Nyx AI
      * Define o comportamento, tom e capacidades da assistente
      */
-    const val SYSTEM_PROMPT = """
+    val SYSTEM_PROMPT = """
         Você é Nyx AI, uma assistente pessoal digital inteligente, amigável e proativa.
         
         SUAS CARACTERÍSTICAS:
@@ -136,7 +136,7 @@ object NyxPrompts {
     /**
      * System Prompt especializado para modo Financeiro/MEI
      */
-    const val FINANCE_SYSTEM_PROMPT = """
+    val FINANCE_SYSTEM_PROMPT = """
         Você é Nyx AI, especializada em gestão financeira para Microempreendedores Individuais (MEI).
         
         ESPECIALIDADES FINANCEIRAS:
@@ -160,7 +160,7 @@ object NyxPrompts {
     /**
      * System Prompt para modo Criativo
      */
-    const val CREATIVE_SYSTEM_PROMPT = """
+    val CREATIVE_SYSTEM_PROMPT = """
         Você é Nyx AI em modo criativo.
         
         CAPACIDADES CRIATIVAS:

@@ -2,69 +2,77 @@ package com.nyxai.app.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nyxai.app.data.model.Message
 import com.nyxai.app.data.model.SenderType
 import com.nyxai.app.databinding.ItemChatMessageBinding
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
-/**
- * Adapter para a RecyclerView de mensagens do chat
- */
-class ChatAdapter(
-    private val messages: List<Message>
-) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
-    
-    private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-    
-    inner class ChatViewHolder(private val binding: ItemChatMessageBinding) 
-        : RecyclerView.ViewHolder(binding.root) {
-        
-        fun bind(message: Message) {
-            binding.textViewMessage.text = message.content
-            binding.textViewTime.text = timeFormat.format(Date(message.timestamp))
-            
-            // Configurar layout baseado no remetente
-            val isUser = message.sender == SenderType.USER
-            
-            // Alinhamento e estilo da bolha
-            val layoutParams = binding.cardMessage.layoutParams as ViewGroup.MarginLayoutParams
-            if (isUser) {
-                layoutParams.marginEnd = 16
-                layoutParams.marginStart = 80
-                binding.cardMessage.setCardBackgroundColor(
-                    binding.root.context.getColor(com.nyxai.app.R.color.chat_bubble_user)
-                )
-                binding.textViewMessage.setTextColor(
-                    binding.root.context.getColor(com.nyxai.app.R.color.text_primary)
-                )
-            } else {
-                layoutParams.marginStart = 16
-                layoutParams.marginEnd = 80
-                binding.cardMessage.setCardBackgroundColor(
-                    binding.root.context.getColor(com.nyxai.app.R.color.chat_bubble_ai)
-                )
-                binding.textViewMessage.setTextColor(
-                    binding.root.context.getColor(com.nyxai.app.R.color.text_primary)
-                )
-            }
-            binding.cardMessage.layoutParams = layoutParams
-        }
-    }
-    
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
+class ChatAdapter : ListAdapter<Message, ChatAdapter.MessageViewHolder>(MessageDiffCallback()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         val binding = ItemChatMessageBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return ChatViewHolder(binding)
+        return MessageViewHolder(binding)
     }
-    
-    override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        holder.bind(messages[position])
+
+    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
-    
-    override fun getItemCount(): Int = messages.size
+
+    inner class MessageViewHolder(
+        private val binding: ItemChatMessageBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(message: Message) {
+            binding.textMessageContent.text = message.content
+            binding.textMessageTime.text = formatTimestamp(message.timestamp)
+
+            // Configurar layout baseado no remetente
+            if (message.sender == SenderType.USER) {
+                // Mensagem do usuário - alinhada à direita
+                binding.messageContainer.setBackgroundResource(R.drawable.bg_message_user)
+                binding.textMessageContent.setTextColor(
+                    itemView.context.getColor(com.nyxai.app.R.color.text_primary)
+                )
+                binding.messageContainer.layoutParams.apply {
+                    this as ViewGroup.MarginLayoutParams
+                    marginStart = itemView.resources.getDimensionPixelSize(com.nyxai.app.R.dimen.message_margin_start)
+                    marginEnd = 0
+                }
+            } else {
+                // Mensagem da Nyx AI - alinhada à esquerda
+                binding.messageContainer.setBackgroundResource(R.drawable.bg_message_ai)
+                binding.textMessageContent.setTextColor(
+                    itemView.context.getColor(com.nyxai.app.R.color.text_primary)
+                )
+                binding.messageContainer.layoutParams.apply {
+                    this as ViewGroup.MarginLayoutParams
+                    marginStart = 0
+                    marginEnd = itemView.resources.getDimensionPixelSize(com.nyxai.app.R.dimen.message_margin_end)
+                }
+            }
+        }
+
+        private fun formatTimestamp(timestamp: Long): String {
+            val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+            return sdf.format(java.util.Date(timestamp))
+        }
+    }
+
+    class MessageDiffCallback : DiffUtil.ItemCallback<Message>() {
+        override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Message, newItem: Message): Boolean {
+            return oldItem == newItem
+        }
+    }
 }

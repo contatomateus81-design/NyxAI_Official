@@ -8,7 +8,7 @@ data class Message(
     @PrimaryKey(autoGenerate = true)
     val id: Long? = null,
     val content: String,
-    val sender: String, // "user", "nyx", "system"
+    val sender: SenderType, // USER, AI, SYSTEM
     val type: MessageType = MessageType.TEXT,
     val timestamp: Long = System.currentTimeMillis(),
     val isRead: Boolean = false,

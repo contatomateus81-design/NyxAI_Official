@@ -4,13 +4,13 @@ package com.nyxai.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import com.google.android.material.card.MaterialCardView;
 import com.nyxai.app.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -18,29 +18,29 @@ import java.lang.String;
 
 public final class ItemChatMessageBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final FrameLayout rootView;
 
   @NonNull
-  public final MaterialCardView cardMessage;
+  public final LinearLayout messageContainer;
 
   @NonNull
-  public final TextView textViewMessage;
+  public final TextView textMessageContent;
 
   @NonNull
-  public final TextView textViewTime;
+  public final TextView textMessageTime;
 
-  private ItemChatMessageBinding(@NonNull ConstraintLayout rootView,
-      @NonNull MaterialCardView cardMessage, @NonNull TextView textViewMessage,
-      @NonNull TextView textViewTime) {
+  private ItemChatMessageBinding(@NonNull FrameLayout rootView,
+      @NonNull LinearLayout messageContainer, @NonNull TextView textMessageContent,
+      @NonNull TextView textMessageTime) {
     this.rootView = rootView;
-    this.cardMessage = cardMessage;
-    this.textViewMessage = textViewMessage;
-    this.textViewTime = textViewTime;
+    this.messageContainer = messageContainer;
+    this.textMessageContent = textMessageContent;
+    this.textMessageTime = textMessageTime;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -65,26 +65,26 @@ public final class ItemChatMessageBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.cardMessage;
-      MaterialCardView cardMessage = ViewBindings.findChildViewById(rootView, id);
-      if (cardMessage == null) {
+      id = R.id.messageContainer;
+      LinearLayout messageContainer = ViewBindings.findChildViewById(rootView, id);
+      if (messageContainer == null) {
         break missingId;
       }
 
-      id = R.id.textViewMessage;
-      TextView textViewMessage = ViewBindings.findChildViewById(rootView, id);
-      if (textViewMessage == null) {
+      id = R.id.textMessageContent;
+      TextView textMessageContent = ViewBindings.findChildViewById(rootView, id);
+      if (textMessageContent == null) {
         break missingId;
       }
 
-      id = R.id.textViewTime;
-      TextView textViewTime = ViewBindings.findChildViewById(rootView, id);
-      if (textViewTime == null) {
+      id = R.id.textMessageTime;
+      TextView textMessageTime = ViewBindings.findChildViewById(rootView, id);
+      if (textMessageTime == null) {
         break missingId;
       }
 
-      return new ItemChatMessageBinding((ConstraintLayout) rootView, cardMessage, textViewMessage,
-          textViewTime);
+      return new ItemChatMessageBinding((FrameLayout) rootView, messageContainer,
+          textMessageContent, textMessageTime);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

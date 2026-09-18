@@ -1,12 +1,14 @@
 package com.nyxai.app.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nyxai.app.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nyxai.app.ui.ChatActivity
 
 /**
- * Tela Principal (MainActivity) - Navegação entre Chat, Automação e Configurações
+ * Tela Principal (MainActivity) - Navegação simplificada
+ * Foco no Chat como feature principal do MVP
  */
 class MainActivity : AppCompatActivity() {
     
@@ -17,37 +19,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        setupBottomNavigation()
-        
-        // Carregar tela inicial (Chat)
-        if (savedInstanceState == null) {
-            loadFragment(ChatFragment())
-        }
-    }
-    
-    private fun setupBottomNavigation() {
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                com.nyxai.app.R.id.nav_chat -> {
-                    loadFragment(ChatFragment())
-                    true
-                }
-                com.nyxai.app.R.id.nav_automation -> {
-                    loadFragment(AutomationFragment())
-                    true
-                }
-                com.nyxai.app.R.id.nav_settings -> {
-                    loadFragment(SettingsFragment())
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-    
-    private fun loadFragment(fragment: androidx.fragment.app.Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(com.nyxai.app.R.id.fragment_container, fragment)
-            .commit()
+        // No MVP, vamos direto para o Chat
+        // Navegação inferior será implementada no v2
+        startActivity(Intent(this, ChatActivity::class.java))
+        finish()
     }
 }

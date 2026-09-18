@@ -54,9 +54,14 @@
             android:name="com.nyxai.app.ui.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.NyxAI.Splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
-        <!-- Main Activity (Entry Point - decides flow) -->
+        <!-- Main Activity -->
         <activity
             android:name="com.nyxai.app.ui.MainActivity"
             android:exported="false"
@@ -66,21 +71,21 @@
 
         <!-- Onboarding Activity -->
         <activity
-            android:name="com.nyxai.app.ui.onboarding.OnboardingActivity"
+            android:name="com.nyxai.app.ui.OnboardingActivity"
             android:exported="false"
             android:theme="@style/Theme.NyxAI" >
         </activity>
 
         <!-- API Setup Activity -->
         <activity
-            android:name="com.nyxai.app.ui.setup.ApiSetupActivity"
+            android:name="com.nyxai.app.ui.ApiSetupActivity"
             android:exported="false"
             android:theme="@style/Theme.NyxAI" >
         </activity>
 
         <!-- Chat Activity -->
         <activity
-            android:name="com.nyxai.app.ui.chat.ChatActivity"
+            android:name="com.nyxai.app.ui.ChatActivity"
             android:exported="false"
             android:theme="@style/Theme.NyxAI"
             android:windowSoftInputMode="adjustResize" >
