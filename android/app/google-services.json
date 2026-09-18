@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "135094662465",
+    "project_id": "nyx-ai-1bf46",
+    "storage_bucket": "nyx-ai-1bf46.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135094662465:android:96f87c6d1a73f52b429dc0",
+        "android_client_info": {
+          "package_name": "com.nyxai.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9FpbxPXi9JKiTzC6qWzFBqv1BEe90M3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

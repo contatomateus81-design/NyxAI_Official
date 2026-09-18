@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.nyxai.app-mergeDebugResources-45:/layout/activity_main.xml",
+        "source": "com.nyxai.app-main-48:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.nyxai.app-mergeDebugResources-45:/layout/fragment_chat.xml",
+        "source": "com.nyxai.app-main-48:/layout/fragment_chat.xml"
+    },
+    {
+        "merged": "com.nyxai.app-mergeDebugResources-45:/layout/activity_api_setup.xml",
+        "source": "com.nyxai.app-main-48:/layout/activity_api_setup.xml"
+    },
+    {
+        "merged": "com.nyxai.app-mergeDebugResources-45:/layout/item_chat_message.xml",
+        "source": "com.nyxai.app-main-48:/layout/item_chat_message.xml"
+    },
+    {
+        "merged": "com.nyxai.app-mergeDebugResources-45:/layout/activity_onboarding.xml",
+        "source": "com.nyxai.app-main-48:/layout/activity_onboarding.xml"
+    },
+    {
+        "merged": "com.nyxai.app-mergeDebugResources-45:/layout/fragment_onboarding.xml",
+        "source": "com.nyxai.app-main-48:/layout/fragment_onboarding.xml"
+    },
+    {
+        "merged": "com.nyxai.app-mergeDebugResources-45:/layout/fragment_onboarding_step.xml",
+        "source": "com.nyxai.app-main-48:/layout/fragment_onboarding_step.xml"
+    },
+    {
+        "merged": "com.nyxai.app-mergeDebugResources-45:/layout/activity_splash.xml",
+        "source": "com.nyxai.app-main-48:/layout/activity_splash.xml"
+    }
+]
